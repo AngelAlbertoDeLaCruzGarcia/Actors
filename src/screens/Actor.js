@@ -1,8 +1,7 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, {Component, useEffect} from 'react';
 /*Components*/
 import {Animated, View, Text, Image, Platform, StyleSheet, Linking, TouchableOpacity} from 'react-native';
 import { Button, IconButton } from 'react-native-paper';
-import MaterialAnimatedView from '../components/Actor/MaterialAnimatedView';
 /*utils*/
 import styles from '../components/Actor/style';
 import {ThemeUtils, Color} from '../style';
@@ -39,21 +38,6 @@ export default class ArtistScreen extends Component {
         response.results[0].known_for.push(obj);
         this.setState({actor:response.results[0], movies:response.results[0].known_for});
     }
-    renderArtistCard = (index, item) => {
-        return (
-            <MaterialAnimatedView key={index.toString()} index={index}>
-                
-                <TouchableOpacity activeOpacity={0.8} style={styles.artistCardContainerStyle}
-                                  onPress={() => {}}>
-                    <View style={styles.cardTextContainer}>
-                        <Text numberOfLines={1} style={styles.songTitleStyle}>{item.title}</Text>
-                        <Text numberOfLines={5} style={styles.sinopsis}>{item.overview}</Text>
-                    </View>
-                    <Image source={{uri:`${URL_IMG}${item.poster_path}`}} style={styles.artistImage}/>
-                </TouchableOpacity>
-            </MaterialAnimatedView>
-        );
-    };
 
     //For header background color from transparent to header color
     _getHeaderBackgroundColor = () => {
